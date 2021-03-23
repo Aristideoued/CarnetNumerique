@@ -1,0 +1,36 @@
+<table border="3">
+  <tr>
+    <td class=" pats-list">Identifiant</td>
+    <td class=" pats-list">Nom</td>
+    <td class=" pats-list">Prenom</td>
+     <td class=" pats-list">Date de naissance</td>
+    <td class=" pats-list">Age</td>
+    <td class=" pats-list">Poids</td>
+    <td class=" pats-list">Taille</td>
+    <td class=" pats-list">Sexe</td>
+    <td class=" pats-list">Modifier</td>
+    <td class=" pats-list">Supprimer</td>
+  </tr>
+  <tr *ngFor="let pats of patients">
+  <td class=" pats-list">{{pats.sId}}</td>
+  <td class=" ’’’pats-list">{{pats.nom}}</td>
+  <td class=" pats-list">{{pats.prenom}}</td>
+  <td class=" pats-list">{{pats.dateNais}}</td>
+  <td class=" pats-list">{{pats.age}}</td>
+  <td class=" pats-list">{{pats.poids}}</td>
+  <td class=" pats-list">{{pats.taille}}</td>
+  <td class=" pats-list">{{pats.sexe}}</td>
+  <td class=" pats-list"><button class="btn btn-success" (click)="edit(pats)">Modifier</button></td>
+  <td class=" pats-list"><button class="btn btn-danger" (click)="delete(pats)">Supprimer</button></td>
+
+</tr>
+</table><br>
+
+
+
+
+
+<div >
+  <a [routerLink]="[{outlets:{homeOutlet:'add'}}]" class=" btn btn-primary">Ajouter Nouveau patient</a>
+
+</div>

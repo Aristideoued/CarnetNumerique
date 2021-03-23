@@ -1,0 +1,56 @@
+
+<div class="corps">
+
+
+  <div class="row pats-list" *ngFor="let cons of consultation">
+    <table border="2">
+      <tr>
+        <td colspan="2">Patient</td>
+        <td>Maladie</td>
+
+      
+        <td colspan="2">Medecin</td>
+
+
+        <td>Date</td>
+          <td>Hopital</td>
+      </tr>
+      <tr>
+        <td>{{cons.nom}}</td>
+        <td>{{cons.prenom}}</td>
+            <td>{{cons.maladie}}</td>
+
+            <td>{{cons.nom_m}}</td>
+            <td>{{cons.prenom_m}}</td>
+
+
+           <td>{{cons.datec}}</td>
+             <td>{{cons.nomh}}</td>
+      </tr>
+    </table>
+
+
+
+
+      <table  border="2">
+
+          <th class="text">Resumé :</th>
+
+
+        <td class="resume">{{cons.resume}}</td>
+      </table>
+
+
+
+
+
+
+
+  </div>
+
+
+<div >
+  <button class="btn btn-primary" (click)="ajout()">Ajouter un nouveau hopital</button>
+
+</div>
+</div>

@@ -1,0 +1,87 @@
+<div class="add-main" *ngIf="!bool">
+    <h2 class="">Ajout d'un patient</h2><br>
+    <form [formGroup]="addForm" novalidate class="form">
+<table border="1">
+  <div class="alert alert-danger"
+*ngIf="addForm.get('nom').hasError('minlenth') && addForm.get('nom').touched">
+    Minimun 2 caractères
+</div>
+  <div class="alert alert-danger"
+  *ngIf="addForm.get('nom').hasError('required') && addForm.get('nom').touched">
+      Le nom est obligatoire
+  </div>
+  <tr>
+
+    <td>  <label for="nom">Nom :</label></td>
+    <td>  <input type="text" formControlName="nom" placeholder="nom du patient"
+       name="nom" class="form-control"></td>
+  </tr>
+  <div class="alert alert-danger"
+  *ngIf="addForm.get('prenom').hasError('minlenth') && addForm.get('prenom').touched">
+      Minimun 2 caractères
+  </div>
+  <div class="alert alert-danger"
+  *ngIf="addForm.get('prenom').hasError('required') && addForm.get('prenom').touched">
+      Le prénom est obligatoire
+  </div>
+  <tr>
+
+    <td><label for="prenom">Prénom :</label></td>
+    <td>  <input type="text" formControlName="prenom" placeholder="prenom du patient"
+       name="prenom" class="form-control"></td>
+  </tr>
+  <tr>
+    <td>  <label for="dateNais">Date de naissance :</label></td>
+    <td>  <input type="date" formControlName="dateNais"
+       name="dateNais" class="form-control"></td>
+  </tr>
+  <div class="alert alert-danger"
+  *ngIf="addForm.get('age').hasError('required') && addForm.get('age').touched">
+      L'age est obligatoire
+  </div>
+  <tr>
+
+    <td>    <label for="age">Age  :</label></td>
+    <td>  <input type="number" formControlName="age" placeholder="age du patient"
+       name="age" class="form-control"></td>
+  </tr>
+
+  <tr>
+
+    <td>  <label for="poids">poids  :</label></td>
+    <td>  <input type="number" formControlName="poids" placeholder="poids du patient"
+       name="poids" class="form-control"></td>
+  </tr>
+
+  <tr>
+
+    <td>  <label for="taille"> Taille :</label></td>
+    <td><input type="number" formControlName="taille" placeholder="taille patient"
+     name="taille" class="form-control"></td>
+  </tr>
+  <tr>
+    <td>  <label for="sexe">Sexe :</label></td>
+    <td>  <select formControlName="sexe"  class="form-control" name="sexe">
+
+          <option value="Masculin">M
+            <option value="Feminin" >F
+
+                            </select></td>
+  </tr>
+</table><br>
+
+      <button class="btn btn-success"  (click)="onSubmit()">Ajouter</button>
+          <button id="reset" class="btn btn-danger" type="reset" >Reinitialiser</button>
+    </form><br>
+    <div >
+      <a [routerLink]="['/home/id']" class=" btn btn-primary">Accueil</a>
+
+    </div>
+</div>
+<br><br><br><br><div class="message" *ngFor="let pt of patients">
+  <h3>L'identifiant médical du patient est : <h1>{{pt.sId}}</h1></h3>
+<div class="alert alert-danger">
+  Important:le patient doit noté cet identifiant pour des utilsations futures
+</div>
+<a [routerLink]="['/home/id']" class=" btn btn-success">OK</a>
+</div>

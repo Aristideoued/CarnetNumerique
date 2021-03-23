@@ -1,0 +1,112 @@
+
+
+
+<div class="add-main" >
+  <img [src]="Ime" style="width:300px;height:200px;"  class="imgm" /><br><br>
+  <h2 class="">Création d'un compte </h2><br>
+
+    <form [formGroup]="addForm" novalidate class="form">
+      <table border="1" class="tab">
+        <div class="alert alert-danger"
+        *ngIf="addForm.get('identifiant').hasError('required') && addForm.get('identifiant').touched">
+            Votre adresse mail est obligatoire
+        </div>
+        <div class="alert alert-danger" *ngIf="addForm.get('identifiant').hasError('pattern')">
+           adresse mail invalide ! </div>
+        <tr>
+          <td>  <label for="identifiant">Votre dresse mail svp :</label></td>
+          <td>  <input type="email" formControlName="identifiant" placeholder="votre mail ici"
+             name="identifiant" class="form-control" pattern="^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"></td>
+        </tr>
+        <div class="alert alert-danger"
+      *ngIf="addForm.get('nom_m').hasError('minlenth') && addForm.get('nom_m').touched">
+          Minimun 2 caractères
+      </div>
+        <div class="alert alert-danger"
+        *ngIf="addForm.get('nom_m').hasError('required') && addForm.get('nom_m').touched">
+            Le nom est obligatoire
+        </div>
+        <tr>
+          <td>  <label for="nom_m">Nom :</label></td>
+          <td><input type="text" formControlName="nom_m" placeholder="nom "
+           name="nom_m" class="form-control"></td>
+        </tr>
+        <div class="alert alert-danger"
+        *ngIf="addForm.get('prenom_m').hasError('minlenth') && addForm.get('prenom_m').touched">
+            Minimun 2 caractères
+        </div>
+        <div class="alert alert-danger"
+        *ngIf="addForm.get('prenom_m').hasError('required') && addForm.get('prenom_m').touched">
+            Le prénom est obligatoire
+        </div>
+        <tr>
+          <td>  <label for="prenom_m">Prénom :</label></td>
+          <td>  <input type="text" formControlName="prenom_m" placeholder="prenom"
+             name="prenom_m" class="form-control"></td>
+        </tr>
+        <div *ngIf="f.mobileNumber.touched && f.mobileNumber.invalid" class="alert alert-danger">
+
+          <div class="alert alert-danger" *ngIf="f.mobileNumber.errors.required">
+            Le numero de téléphone est obligatoire !</div>
+
+          <div class="alert alert-danger" *ngIf="addForm.get('mobileNumber').hasError('pattern')">
+            Veuillez respecter le format :11 11 11 11 </div>
+
+      </div>
+        <tr>
+          <td> <label for="mobileNumber">Entrer votre numero de téléphone :</label></td>
+          <td> <input name="mobileNumber" [(ngModel)]="medecin.mobileNumber"
+               formControlName="mobileNumber"
+               placeholder="Votre numero de téléphone "
+               name="mobileNumber" class="form-control"
+               pattern="^\d{2} \d{2} \d{2} \d{2}$"
+               size="10"></td>
+        </tr>
+        <tr>
+          <td>  <label for="hopital">Choisissez votre hopital :</label></td>
+          <td>  <select formControlName="hopital"  class="form-control" name="hopital">
+
+                <option *ngFor="let hp of hopital"
+                 value={{hp.id}}>{{hp.nomh}}
+
+
+            </select></td>
+        </tr>
+        <div class="alert alert-danger"
+        *ngIf="addForm.get('mdp_1').hasError('required') && addForm.get('mdp_1').touched">
+            Le mot de passe est obligatoire
+        </div>
+        <div class="alert alert-danger" *ngIf="f.mdp_1.errors?.minlength ">
+          Le mot de passe doit ètre de minimum 8 caractères
+        </div>
+        <tr>
+          <td><label for="mdp_1"> Votre mot de passe :</label></td>
+          <td>  <input type="password" formControlName="mdp_1" placeholder="mot de passe"
+             name="mdp_1" class="form-control"></td>
+        </tr>
+        <div class="alert alert-danger"
+        *ngIf="addForm.get('mdp_2').hasError('required') && addForm.get('mdp_2').touched">
+            La confirmation du mot de passe est obligatoire
+        </div>
+        <div class="alert alert-danger" *ngIf=" (addForm.get('mdp_2').value!== addForm.get('mdp_1').value) && addForm.get('mdp_2').touched ">
+          Vos mots de passe sont différents</div>
+
+        <tr>
+          <td>  <label for="mdp_2"> Confirmer votre mot de passe :</label></td>
+          <td>  <input type="password" formControlName="mdp_2" placeholder=" confirmer mot de passe"
+             name="mdp_2" class="form-control"></td>
+        </tr>
+      </table><br>
+
+
+
+     <button class="btn btn-success" (click)="onSubmit()">Valider</button>
+       <button id="reset" class="btn btn-danger" type="reset" >Reinitialiser</button>
+    </form> <br>
+    <div >
+
+
+      <a [routerLink]="['/login']" class=" btn btn-primary">Quitter</a>
+
+    </div>
+</div>

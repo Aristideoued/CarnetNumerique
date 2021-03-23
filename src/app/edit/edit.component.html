@@ -1,0 +1,81 @@
+<div class="add-main" >
+    <h2 >Modifier les informations d'un patient</h2><br>
+    <form [formGroup]="addForm" novalidate class="form">
+        <table border="1" class="tab">
+          <div class="alert alert-danger"
+        *ngIf="addForm.get('nom').hasError('minlenth') && addForm.get('nom').touched">
+            Minimun 2 caractères
+        </div>
+          <div class="alert alert-danger"
+          *ngIf="addForm.get('nom').hasError('required') && addForm.get('nom').touched">
+              Le nom est obligatoire
+          </div>
+          <tr>
+            <td>  <label for="nom">Nom :</label></td>
+            <td>  <input type="text" formControlName="nom" placeholder="nom du patient"
+               name="nom" class="form-control"></td>
+          </tr>
+          <div class="alert alert-danger"
+          *ngIf="addForm.get('prenom').hasError('minlenth') && addForm.get('prenom').touched">
+              Minimun 2 caractères
+          </div>
+          <div class="alert alert-danger"
+          *ngIf="addForm.get('prenom').hasError('required') && addForm.get('prenom').touched">
+              Le prénom est obligatoire
+          </div>
+          <tr>
+            <td>  <label for="prenom">Prénom :</label></td>
+            <td>  <input type="text" formControlName="prenom" placeholder="prenom du patient"
+               name="prenom" class="form-control"></td>
+          </tr>
+          <tr>
+            <td>  <label for="dateNais">Date de naissance :</label></td>
+            <td>  <input type="date" formControlName="dateNais"
+               name="dateNais" class="form-control"></td>
+          </tr>
+          <div class="alert alert-danger"
+          *ngIf="addForm.get('age').hasError('required') && addForm.get('age').touched">
+              L'age est obligatoire
+          </div>
+          <tr>
+            <td>  <label for="age">Age  :</label></td>
+            <td><input type="number" formControlName="age" placeholder="age du patient"
+             name="age" class="form-control"></td>
+          </tr>
+          <div class="alert alert-danger"
+          *ngIf="addForm.get('poids').hasError('required') && addForm.get('poids').touched">
+              Le poids est obligatoire
+          </div>
+          <tr>
+            <td>  <label for="poids">poids  :</label></td>
+            <td>  <input type="number" formControlName="poids" placeholder="poids du patient"
+               name="poids" class="form-control"></td>
+          </tr>
+          <div class="alert alert-danger"
+          *ngIf="addForm.get('taille').hasError('required') && addForm.get('taille').touched">
+              Le taille est obligatoire
+          </div>
+          <tr>
+            <td>  <label for="taille"> Taille :</label></td>
+            <td><input type="number" formControlName="taille" placeholder="taille patient"
+             name="taille" class="form-control"></td>
+          </tr>
+          <tr>
+            <td>  <label for="sexe">Sexe :</label></td>
+            <td>  <select formControlName="sexe" name="sexe" class="form-control">
+
+                  <option value="Masculin">M
+                    <option value="Feminin" >F
+
+                                    </select></td>
+          </tr>
+        </table>
+    <input type="hidden" formControlName="sId" name="sId">
+<br>
+
+      <button class="btn btn-success"  (click)="update()">Enregistrer</button>
+    </form>
+
+
+
+</div>

@@ -1,0 +1,28 @@
+<div class="row pats-list">
+   <!--<div class=" pats-list">Identifiant</div>
+   <div class=" pats-list">Nom</div>
+   <div class=" pats-list">Prenom</div>-->
+
+    <div class=" pats-list">Hopital</div>
+    <div class=" pats-list">compte</div>
+   <div class=" pats-list">Modifier</div>
+   <div class=" pats-list">Supprimer</div>
+</div>
+
+
+  <div class="row pats-list" *ngFor="let mdc of consultation">
+  <div class=" pats-list">{{mdc.maladie}}</div>
+  <div class=" pats-list">{{mdc.cpte}}</div>
+  <!--<div class=" pats-list">{{mdc.prenom_m}}</div>
+  <div class=" pats-list">{{mdc.mobileNumber}}</div>
+  <div class=" pats-list">{{mdc.nomh}}</div>-->
+  <div class=" pats-list"><button class="btn btn-success" (click)="edit(mdc)">Modifier</button></div>
+  <div class=" pats-list"><button class="btn btn-danger" (click)="delete(mdc)">Supprimer</button>
+
+  </div>
+
+</div>
+<div >
+  <a [routerLink]="[{outlets:{homeOutlet:'add'}}]" class=" btn btn-primary">Ajouter Nouveau patient</a>
+
+</div>

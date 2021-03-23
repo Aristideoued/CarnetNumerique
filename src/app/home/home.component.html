@@ -1,0 +1,31 @@
+<div class="rows">
+
+  <div class="body">
+
+  <img [src]="Image" style="width:120px;height:100px;"  class="pull-left"/>
+  <img [src]="Image_1" style="width:70px;height:70px;" class="pull-left" />
+<table class="heure" border="2">
+  <tr>
+    <td><h3 >{{dt | date:'dd-MM-yyyy   HH:mm '}}
+    </h3></td>
+  </tr>
+</table>
+
+  <div class="bn">
+      <a [routerLink]="['/login']" class=" btn btn-danger">Deconnexion</a>
+
+  </div>
+
+  <div class="nvb">
+
+     <app-navbar [showSideBar]="showHideSideBar"
+                  (showSideBarChange)="onShowSideBarChange($event)"  >
+     </app-navbar>
+  </div><hr class="hrr">
+
+  <div class="home" >
+    <router-outlet name="homeOutlet"></router-outlet>
+  </div>
+  </div>
+
+</div>

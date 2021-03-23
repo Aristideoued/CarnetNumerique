@@ -1,0 +1,27 @@
+<nav class="hidden-xs-down bg-faded sidebar">
+     <ul class="nav nav-pills flex-column">
+       <li class="nav-item">
+         <a class=" nav-link"
+        [routerLink]="[{outlets:{homeOutlet:'dashboard'}}]"
+
+         routerLinkActive="active">Dashboard</a>
+       </li>
+        <li class="nav-item">
+          <a class=" nav-link"
+           [routerLink]="[{outlets:{homeOutlet:'viewmedecin'}}]"
+
+           routerLinkActive="active">Medecins</a>
+        </li>
+        <li class="nav-item">
+          <a class=" nav-link"
+         [routerLink]="[{outlets:{homeOutlet:'viewhopital'}}]"
+
+          routerLinkActive="active">Hopitaux</a>
+        </li>
+
+
+
+      </ul>
+
+
+    </nav>
