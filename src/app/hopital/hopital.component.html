@@ -1,0 +1,41 @@
+
+<div class="add-main" >
+    <h2 class="">Ajouter un hopital</h2>
+    <form [formGroup]="addForm" novalidate class="form">
+   <table border="1">
+     <div class="alert alert-danger"
+   *ngIf="addForm.get('nomh').hasError('minlenth') && addForm.get('nomh').touched">
+       Minimun 2 caractères
+   </div>
+     <div class="alert alert-danger"
+     *ngIf="addForm.get('nomh').hasError('required') && addForm.get('nomh').touched">
+         Le nom de l'hopital est obligatoire
+     </div>
+     <tr>
+       <td>  <label for="nomh">Nom de l'hopital :</label></td>
+       <td>  <input type="text" formControlName="nomh" placeholder="nom de l'hopital"
+          name="nomh" class="form-control"></td>
+     </tr>
+     <tr>
+       <td>  <label for="province">Province :</label></td>
+       <td>  <select formControlName="province"  class="form-control" name="province">
+
+             <option value="Balé">Balé
+               <option value="Bam" >Bam
+                 <option value="Banwa" >Banwa
+                   <option value="Kadiogo" >Kadiogo
+
+                               </select></td>
+     </tr>
+
+     <tr>
+       <td>  <label for="ville">Ville :</label></td>
+       <td><input type="text" formControlName="ville" placeholder="Ville de l'hopital"
+        name="ville" class="form-control"></td>
+     </tr>
+   </table><br>
+
+      <button class="btn btn-success"  (click)="onSubmit()">Ajouter</button>
+    </form>
+
+</div>

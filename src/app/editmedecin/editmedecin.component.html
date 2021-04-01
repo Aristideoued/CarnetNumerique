@@ -1,0 +1,100 @@
+<div class="add-main" >
+    <h2 class="text-center">Creation d'un compte </h2>
+    <form [formGroup]="addForm" novalidate class="form">
+      <div class="alert alert-danger"
+    *ngIf="addForm.get('identifiant').hasError('maxlenth') && addForm.get('identifiant').touched">
+        Maximum 15 caractères
+    </div>
+      <div class="alert alert-danger"
+      *ngIf="addForm.get('identifiant').hasError('required') && addForm.get('identifiant').touched">
+          L'identifiant est obligatoire
+      </div>
+      <div class="form-group">
+        <label for="identifiant">Votre identifiant :</label>
+        <input type="text" formControlName="identifiant" placeholder="entrez votre identifiant"
+         name="identifiant" class="form-control">
+    </div>
+      <div class="alert alert-danger"
+    *ngIf="addForm.get('nom').hasError('minlenth') && addForm.get('nom').touched">
+        Minimun 2 caractères
+    </div>
+      <div class="alert alert-danger"
+      *ngIf="addForm.get('nom').hasError('required') && addForm.get('nom').touched">
+          Le nom est obligatoire
+      </div>
+      <div class="form-group">
+        <label for="nom">Nom :</label>
+        <input type="text" formControlName="nom" placeholder="nom du patient"
+         name="nom" class="form-control">
+    </div>
+    <div class="alert alert-danger"
+    *ngIf="addForm.get('prenom').hasError('minlenth') && addForm.get('prenom').touched">
+        Minimun 2 caractères
+    </div>
+    <div class="alert alert-danger"
+    *ngIf="addForm.get('prenom').hasError('required') && addForm.get('prenom').touched">
+        Le prénom est obligatoire
+    </div>
+    <div class="form-group">
+        <label for="prenom">Prénom :</label>
+        <input type="text" formControlName="prenom" placeholder="prenom du patient"
+         name="prenom" class="form-control">
+    </div>
+
+   <div class="form-group">
+       <label for="mobileNumber">Entrer votre numero de téléphone :</label>
+       <input name="mobileNumber" [(ngModel)]="medecin.mobileNumber"
+           formControlName="mobileNumber"
+           placeholder="Votre numero de téléphone "
+           name="mobileNumber" class="form-control"
+           pattern="^\d{2} \d{2} \d{2} \d{2}$" >
+    </div>
+    <div *ngIf="f.mobileNumber.touched && f.mobileNumber.invalid" class="alert alert-danger">
+
+      <div *ngIf="f.mobileNumber.errors.required">Le numero de téléphone est obligatoire !</div>
+
+        <div *ngIf="addForm.get('mobileNumber').hasError('pattern')">Le numero de téléphone est invalide (format: 12 22 22 22) !</div>
+
+  </div>
+
+    <div class="form-group">
+        <label for="hopital">Choisissez votre hopital :</label>
+        <select formControlName="hopital"  class="form-control" name="hopital">
+
+            <option *ngFor="let hp of hopital"
+             value={{hp.id}}>{{hp.nomh}}
+
+
+        </select>
+     </div>
+
+    <div class="alert alert-danger"
+    *ngIf="addForm.get('mdp_1').hasError('required') && addForm.get('mdp_1').touched">
+        Le mot de passe est obligatoire
+    </div>
+    <div class="form-group">
+        <label for="mdp_1"> Votre mot de passe :</label>
+        <input type="password" formControlName="mdp_1" placeholder="mot de passe"
+         name="mdp_1" class="form-control">
+    </div>
+     <div class="alert alert-danger" *ngIf="f.mdp_1.errors?.minlength ">
+       Le mot de passe doit ètre compris entre 8 et 30 caractères
+     </div>
+    <div class="alert alert-danger"
+    *ngIf="addForm.get('mdp_2').hasError('required') && addForm.get('mdp_2').touched">
+        La confirmation du mot de passe est obligatoire
+    </div>
+    <div class="form-group">
+        <label for="mdp_2"> Confirmer votre mot de passe :</label>
+        <input type="password" formControlName="mdp_2" placeholder="mot de passe"
+         name="mdp_2" class="form-control">
+    </div>
+     <div class="alert alert-danger" *ngIf="f.mdp_2.errors?.mustMatch">Vos mots de passe sont différents</div>
+      <button class="btn btn-success" (click)="update()">Enregistrer</button>
+    </form>
+
+</div>
+<div >
+  <a [routerLink]="['/home']" class=" btn btn-primary">Liste des patients</a>
+
+</div>

@@ -1,0 +1,55 @@
+<div class="add-main" >
+    <h2 class="text-center">Modifier les informations d'un hopital</h2>
+    <form [formGroup]="addForm" novalidate class="form">
+         <input type="hidden" formControlName="id" name="id">
+      <div class="alert alert-danger"
+    *ngIf="addForm.get('nom').hasError('minlenth') && addForm.get('nom').touched">
+        Minimun 2 caractères
+    </div>
+      <div class="alert alert-danger"
+      *ngIf="addForm.get('nom').hasError('required') && addForm.get('nom').touched">
+          Le nom est obligatoire
+      </div>
+      <div class="form-group">
+        <label for="nom">Nom :</label>
+        <input type="text" formControlName="nom" placeholder="nom de l'hopital"
+         name="nom" class="form-control">
+    </div>
+    <div class="alert alert-danger"
+  *ngIf="addForm.get('nom').hasError('minlenth') && addForm.get('nom').touched">
+      Minimun 2 caractères
+  </div>
+    <div class="alert alert-danger"
+    *ngIf="addForm.get('nom').hasError('required') && addForm.get('nom').touched">
+        Le nom est obligatoire
+    </div>
+    <div class="form-group">
+      <label for="nom">Province :</label>
+      <input type="text" formControlName="province" placeholder="province de l'hopital"
+       name="province" class="form-control">
+  </div>
+
+  <div class="alert alert-danger"
+*ngIf="addForm.get('nom').hasError('minlenth') && addForm.get('nom').touched">
+    Minimun 2 caractères
+</div>
+  <div class="alert alert-danger"
+  *ngIf="addForm.get('nom').hasError('required') && addForm.get('nom').touched">
+      Le nom est obligatoire
+  </div>
+  <div class="form-group">
+    <label for="nom">Ville :</label>
+    <input type="text" formControlName="ville" placeholder="ville de l'hopital"
+     name="ville" class="form-control">
+</div>
+
+      <button class="btn btn-success"  (click)="update()">Enregistrer</button>
+    </form>
+
+
+
+</div>
+<div >
+  <a  [routerLink]="[{outlets:{homeOutlet:'viewhopital'}}]" class=" btn btn-primary">Liste des hopitaux</a>
+
+</div>

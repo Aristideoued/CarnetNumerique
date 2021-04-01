@@ -1,0 +1,88 @@
+<div class="add-main" >
+<div *ngIf="!clk">
+
+
+    <h2 class=""> Suivi </h2><br>
+    <form [formGroup]="addForm" novalidate class="form">
+      <table border="1" class="tab">
+        <div class="alert alert-danger"
+      *ngIf="  addForm.get('idp').hasError('minlength') && addForm.get('idp').touched ">
+          identifiant incorrect!
+      </div>
+        <div class="alert alert-danger"
+        *ngIf="addForm.get('idp').hasError('required') && addForm.get('idp').touched">
+            L'identifiant du patient est obligatoire
+        </div>
+        <tr>
+          <td>  <label for="idp">Numéro d'identification du patient :</label></td>
+          <td>   <input type="text" formControlName="idp" placeholder="entrez le numero "
+             name="idp" class="form-control"></td>
+        </tr>
+
+              <div class="alert alert-danger"
+              *ngIf="addForm.get('idm').hasError('required') && addForm.get('idm').touched">
+                  Votre mail est obligatoire
+              </div>
+              <div class="alert alert-danger" *ngIf="addForm.get('idm').hasError('pattern')">
+                 adresse mail invalide ! </div>
+        <tr>
+          <td><label for="idm">Votre adresse mail :</label></td>
+          <td>  <input type="text" formControlName="idm" placeholder="entrez votre mail svp"
+             name="idm" class="form-control" pattern="^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"></td>
+        </tr>
+        <div class="alert alert-danger"
+        *ngIf="addForm.get('maladie').hasError('minlength') && addForm.get('maladie').touched">
+            Minimum 2 caractères svp !
+        </div>
+        <div class="alert alert-danger"
+        *ngIf="addForm.get('maladie').hasError('required') && addForm.get('maladie').touched">
+            Le motif svp !
+        </div>
+        <tr>
+          <td><label for="maladie">Motif (exemple le nom de la maladie) :</label></td>
+          <td> <input type="text" formControlName="maladie" placeholder="le motif"
+            name="maladie" class="form-control"></td>
+        </tr>
+
+
+
+
+      </table><br>
+
+
+
+   <button class="btn btn-success" (click)="onSubmit()">Valider</button>
+      <button id="reset" class="btn btn-danger" type="reset">Reinitialiser</button>
+ </form></div><br>
+ <div *ngIf="clk">
+  <h1>Suivi de patient</h1>
+   <input type="hidden" name="" [(ngModel)]= "consultation[0].medecin">
+ <table border="3">
+   <tr>
+
+     <td class=" text-center">Numéro d'identification</td>
+     <td class=" text-center">Nom</td>
+     <td class=" text-center">Prenom</td>
+     <td class=" text-center">Maladie</td>
+     <td class=" text-center">Résumé du suivi</td>
+     <td class=" text-center">Modifier</td>
+
+   </tr>
+   <tr >
+
+<td class=" text-center">{{consultation[0].sId}}</td>
+   <td class=" text-center">{{consultation[0].nom}}</td>
+   <td class=" text-center">{{consultation[0].prenom}}</td>
+   <td class=" text-center">{{consultation[0].maladie}}</td>
+   <td class=" resume">{{consultation[0].resume}}</td>
+
+   <td class=" text-center"><button class="btn btn-success" (click)="edit(consultation[0])">Modifier</button></td>
+
+
+ </tr>
+ </table></div><br>
+ <div >
+   <button class="btn btn-primary" (click)="ajout()">Accueil</button>
+
+ </div>
+  </div>

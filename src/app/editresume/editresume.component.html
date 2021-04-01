@@ -1,0 +1,42 @@
+<div class="add-main" >
+
+    <h2 class=""> Mise à jour du suivi </h2><br>
+    <form [formGroup]="addForm" novalidate class="form">
+      <table border="1" class="tab">
+      <input type="hidden" name="sId" formControlName="sId">
+      <input type="hidden" name="nom" formControlName="nom">
+      <input type="hidden" name="prenom" formControlName="prenom">
+      <input type="hidden" name="maladie" formControlName="maladie">
+
+
+
+
+      <div class="rs">
+
+
+      <div class="alert alert-danger"
+      *ngIf="addForm.get('resume').hasError('minlength') && addForm.get('resume').touched">
+          Un resumé  de minimum 50 caractères !
+      </div>
+      <div class="alert alert-danger"
+      *ngIf="addForm.get('resume').hasError('required') && addForm.get('resume').touched">
+          Un resumé  svp !
+      </div>
+
+         <label for="resume">Modifier le résumé :</label><br>
+         <textarea rows="5" cols="1" formControlName="resume"
+          name="resume" class="form-control" ></textarea>
+
+      </div>
+
+    <input type="hidden" name="medecin" formControlName="medecin">
+
+
+</table><br>
+<button class="btn btn-success" (click)="updateResum()">Valider</button>
+ </form><br>
+
+
+
+
+  </div>

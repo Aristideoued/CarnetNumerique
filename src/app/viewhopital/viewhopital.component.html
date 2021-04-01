@@ -1,0 +1,23 @@
+<div class="container">
+  <div >
+    <button class="btn btn-primary" (click)="ajout()">Ajouter un nouveau hopital</button>
+
+  </div><br>
+  <table border="1">
+    <tr class="info">
+      <td>Nom</td>
+      <td>Province</td>
+      <td>Ville</td>
+      <td>Modifier</td>
+      <td>Supprimer</td>
+    </tr>
+    <tr *ngFor="let hp of hopital">
+      <td>{{hp.nomh}}</td>
+      <td>{{hp.province}}</td>
+      <td>{{hp.ville}}</td>
+      <td><button class="btn btn-success" (click)="edit(hp)">Modifier</button></td>
+      <td><button class="btn btn-danger" (click)="delete(hp)">Supprimer</button></td>
+    </tr>
+  </table>
+
+</div>

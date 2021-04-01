@@ -1,0 +1,72 @@
+
+<div class="corps">
+  <h1>Informations presonnelles du patient</h1><br>
+  <table border="3">
+    <tr class="info">
+       <td>Numéro d'identification</td>
+      <td class=" text-center">Nom</td>
+      <td class=" text-center">Prenom</td>
+       <td class=" text-center">Date de naissance</td>
+      <td class=" text-center">Age</td>
+      <td class=" text-center">Poids</td>
+      <td class=" text-center">Taille</td>
+      <td class=" text-center">Sexe</td>
+      <td class=" text-center">Modifier</td>
+
+    </tr>
+    <tr >
+    <td class=" text-center">{{consultation[0].sId}}</td>
+    <td class=" text-center">{{consultation[0].nom}}</td>
+    <td class=" text-center">{{consultation[0].prenom}}</td>
+    <td class=" text-center">{{consultation[0].dateNais}}</td>
+    <td class=" text-center">{{consultation[0].age}}</td>
+    <td class=" text-center">{{consultation[0].poids}}</td>
+    <td class=" text-center">{{consultation[0].taille}}</td>
+    <td class=" text-center">{{consultation[0].sexe}}</td>
+    <td class=" text-center"><button class="btn btn-success" (click)="edit(consultation[0])">Modifier</button></td>
+
+
+  </tr>
+  </table>
+
+<br><br>
+  <h1>Historique médicale du patient</h1><br>
+  <div class="row pats-list" *ngFor="let cons of consultation">
+    <table border="2">
+       <tr class="info">
+
+         <td class="text-center">Maladie</td>
+          <td class="text-center">Date de la consultation</td>
+         <td class="text-center" colspan="3">Medecin en charge </td>
+
+         <td class="text-center">Hopital</td>
+       </tr>
+       <tr>
+
+         <td class="text-center">{{cons.maladie}}</td>
+
+
+         <td class="text-center">{{cons.datec}}</td>
+         <td class="text-center">Nom : {{cons.nom_m}}</td>
+         <td class="text-center">Prénom : {{cons.prenom_m}}</td>
+         <td class="text-center">Numéro : {{cons.mobileNumber}}</td>
+         <td class="text-center">{{cons.nomh}}</td>
+       </tr>
+    </table>
+    <table border="5">
+      <tr class="info">
+        <td class="text-center">Résumé de la prise en charge</td>
+      </tr>
+      <tr>
+         <td class="resume">{{cons.resume}}</td>
+      </tr>
+    </table>
+
+
+  </div>
+
+  <div >
+    <a [routerLink]="['/home']" class=" btn btn-primary">Accueil</a>
+
+  </div>
+</div>

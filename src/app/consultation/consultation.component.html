@@ -1,0 +1,94 @@
+<div class="add-main" >
+
+    <h2 class=""> Consultation </h2><br>
+    <form [formGroup]="addForm" novalidate class="form">
+      <table border="1" class="tab">
+        <div class="alert alert-danger"
+      *ngIf="  addForm.get('idp').hasError('minlength') && addForm.get('idp').touched ">
+          identifiant incorrect!
+      </div>
+        <div class="alert alert-danger"
+        *ngIf="addForm.get('idp').hasError('required') && addForm.get('idp').touched">
+            L'identifiant du patient est obligatoire
+        </div>
+        <tr>
+          <td>  <label for="idp">Numéro d'identification du patient :</label></td>
+          <td>   <input type="text" formControlName="idp" placeholder="entrez le numero "
+             name="idp" class="form-control"></td>
+        </tr>
+
+              <div class="alert alert-danger"
+              *ngIf="addForm.get('idm').hasError('required') && addForm.get('idm').touched">
+                  Votre mail est obligatoire
+              </div>
+              <div class="alert alert-danger" *ngIf="addForm.get('idm').hasError('pattern')">
+                 adresse mail invalide ! </div>
+        <tr>
+          <td><label for="idm">Votre adresse mail :</label></td>
+          <td>  <input type="email" formControlName="idm" placeholder="entrez votre mail svp"
+             name="idm" class="form-control" pattern="^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"></td>
+        </tr>
+        <tr>
+          <td>  <label for="idh"> Hopital :</label></td>
+          <td>  <select formControlName="idh"  class="form-control" name="idh">
+
+                <option  *ngFor="let hp of hopital"
+                 value={{hp.id}}>{{hp.nomh}}
+
+
+            </select></td>
+        </tr>
+        <div class="alert alert-danger"
+        *ngIf="addForm.get('maladie').hasError('minlength') && addForm.get('maladie').touched">
+            Minimum 2 caractères svp !
+        </div>
+        <div class="alert alert-danger"
+        *ngIf="addForm.get('maladie').hasError('required') && addForm.get('maladie').touched">
+            Le motif svp !
+        </div>
+        <tr>
+          <td><label for="maladie">Motif (exemple le nom de la maladie) :</label></td>
+          <td> <input type="text" formControlName="maladie" placeholder="le motif"
+            name="maladie" class="form-control"></td>
+        </tr>
+
+
+      </table><br>
+      <div class="rs">
+
+
+      <div class="alert alert-danger"
+      *ngIf="addForm.get('resume').hasError('minlength') && addForm.get('resume').touched">
+          Un resumé  de minimum 50 caractères !
+      </div>
+      <div class="alert alert-danger"
+      *ngIf="addForm.get('resume').hasError('required') && addForm.get('resume').touched">
+          Un resumé  svp !
+      </div>
+
+         <label for="resume">Un resumé sur la prise en charge (traitement,etat de la maladie...) :</label><br>
+         <textarea rows="5" cols="1" formControlName="resume"
+          name="resume" class="form-control" ></textarea>
+
+      </div>
+
+
+       <input type="hidden" formControlName="datec"
+        name="datec" [(ngModel)]="dt" class="form-control"><br>
+
+
+
+
+
+
+   <button class="btn btn-success" (click)="onSubmit()">Valider</button>
+      <button id="reset" class="btn btn-danger" type="reset">Reinitialiser</button>
+ </form><br>
+
+ <div >
+   <button class="btn btn-primary" (click)="ajout()">Accueil</button>
+
+ </div>
+
+
+  </div>

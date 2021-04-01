@@ -1,0 +1,21 @@
+<br><br><div >
+  <div class="row">
+    <div class="col-lg-6">
+      <app-mychart
+        [type]="'bar'"
+        [title]="'Nombre de medecins par hopital utilisant la plate-forme'"
+        [data]="medecinData">
+
+      </app-mychart>
+</div>
+    <div class="col-lg-6">
+      <app-mychart
+      [type]="'bar'"
+      [title]="'Nombre de consultation par maladie'"
+      [data]="maladieData">
+        </app-mychart>
+
+    </div>
+
+
+</div>
